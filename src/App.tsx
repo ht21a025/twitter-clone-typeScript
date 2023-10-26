@@ -1,22 +1,21 @@
-import './App.css';
-import Sidebar from './conponents/sidebar/Sidebar';
-import Timeline from './conponents/timeline/Timeline';
-import Widgets from './conponents/widget/Widgets';
+import "./App.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
+import SignIn from "./conponents/Login/SingIn";
+import Twitter from "./Twitter";
 
 function App() {
-  return (
-    <div className="app">
-      {/* Sidebar */}
-      <Sidebar />
+  const [user, loading] = useAuthState(auth);
 
-      {/* Timeline */}
-      <Timeline />
-      
-      {/* Widget */}
-      <Widgets />
+  if (loading) {
+    return (
+      <div className="loading">
+        <div className="loading-text">Loading...</div>
+      </div>
+    );
+  }
 
-    </div>
-  );
+  return <div className="app">{user ? <Twitter /> : <SignIn />}</div>;
 }
 
 export default App;

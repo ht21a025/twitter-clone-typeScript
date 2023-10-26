@@ -10,6 +10,7 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Button } from "@mui/material";
 import "./Sidebar.css";
+import SignOut from "../Login/SignOut";
 
 function Sidebar() {
   return (
@@ -26,6 +27,7 @@ function Sidebar() {
         <SidebarOption text="リスト" Icon={ListAltIcon} active={false} />
         <SidebarOption text="プロフィール" Icon={PermIdentityIcon} active={false} />
         <SidebarOption text="もっとみる" Icon={MoreHorizIcon} active={false} />
+        <SignOut />
 
         {/* ツイートボタン */}
         <Button variant="outlined" className="sidebar_tweet" fullWidth>

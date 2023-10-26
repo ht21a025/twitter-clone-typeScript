@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Post from './Post';
+import React, { useState, useEffect } from "react";
+import Post from "./Post";
 import "./Timeline.css";
-import TweetBox from './TweetBox';
-import db from "../../firebase";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore"; 
-import FlipMove from 'react-flip-move';
+import TweetBox from "./TweetBox";
+import { db } from "../../firebase";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import FlipMove from "react-flip-move";
 
 interface PostData {
   displayName: string;
@@ -39,19 +39,19 @@ function Timeline() {
   }, []);
 
   return (
-    <div className="timeline"> 
-        {/* Header */}
-        <div className="timeline_header">
-            <h2>ホーム</h2>
-        </div>
+    <div className="timeline">
+      {/* Header */}
+      <div className="timeline_header">
+        <h2>ホーム</h2>
+      </div>
 
-        {/* TweetBox */}
-        <TweetBox />
+      {/* TweetBox */}
+      <TweetBox />
 
-        {/* Post */}
-        <FlipMove>
+      {/* Post */}
+      <FlipMove>
         {posts.map((post) => (
-          <Post 
+          <Post
             key={post.text}
             displayName={post.displayName}
             username={post.username}
@@ -61,7 +61,7 @@ function Timeline() {
             image={post.image}
           />
         ))}
-        </FlipMove>
+      </FlipMove>
     </div>
   );
 }
